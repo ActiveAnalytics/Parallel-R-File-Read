@@ -37,8 +37,8 @@ The R programmer will know that the time of importance is the elapsed time, noti
 
 ```
 system.time(x1 <- do.call(rbind, x1))
-# user  system elapsed 
-# 38.816   3.310  42.171 
+user  system elapsed 
+38.816   3.310  42.171 
 
 dim(x1) # check number of rows and columns
 [1] 19761893       22
@@ -72,13 +72,15 @@ Here are the outputs obtained comparing `lapply` and `mclapply`:
 
 ```
 .r <- seq(2.99, 3.99, by = 0.001)
+
 system.time(x1 <- mclapply(.r, logMap, .n = 1E4, mc.cores = 8))
-# user  system elapsed 
-# 26.789   0.860   3.922 
+user  system elapsed 
+26.789   0.860   3.922 
 
 system.time(x2 <- lapply(.r, logMap, .n = 1E4))
-# user  system elapsed 
-# 16.017   0.004  16.031 
+
+user  system elapsed 
+16.017   0.004  16.031 
 ```
 
 The 'secret sauce' here is in the `logMap` function where the output vector `.x` is generated first rather than growing the vector iteratively - basically allowing memory to be allocated first before the analysis.
