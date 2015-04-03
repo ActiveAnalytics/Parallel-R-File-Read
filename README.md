@@ -37,14 +37,14 @@ The R programmer will know that the time of importance is the elapsed time, noti
 
 ```
 system.time(x1 <- do.call(rbind, x1))
-#user  system elapsed 
+#user     system elapsed 
 #38.816   3.310  42.171 
 
 dim(x1) # check number of rows and columns
 #[1] 19761893       22
 
 system.time(x3 <- do.call(rbind, x3))
-#user  system elapsed 
+#user    system  elapsed 
 #0.958   0.124   1.083 
 
 dim(x3) # check number of rows and columns
