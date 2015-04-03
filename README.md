@@ -22,16 +22,16 @@ Then we compare times of `lapply` and `mclapply` functions with `read.csv`, and 
 
 ```
 system.time(x1 <- lapply(fNames, read.csv, sep = "|", header = FALSE))
- user      system elapsed 
- 209.846   0.851  210.748 
+user      system elapsed 
+209.846   0.851  210.748 
  
 system.time(x2 <- mclapply(fNames, read.csv, sep = "|", mc.cores = 8, header = FALSE))
- user      system elapsed 
- 341.713  10.654  62.602 
+user      system elapsed 
+341.713  10.654  62.602 
  
 system.time(x3 <- mclapply(fNames, fread, sep = "|", mc.cores = 8))
- user     system elapsed 
- 85.441   2.148  23.012 
+user     system elapsed 
+85.441   2.148  23.012 
 ```
 The R programmer will know that the time of importance is the elapsed time, notice that the `fread` function doesn't have to be told whether there is a header or not, it is clever enough to work it out for itself. But this isn't all, the other nice thing about using the `data.table` format is that binding the list of tables together to form one large table is much faster than using data frames:
 
@@ -78,7 +78,6 @@ user  system elapsed
 26.789   0.860   3.922 
 
 system.time(x2 <- lapply(.r, logMap, .n = 1E4))
-
 user  system elapsed 
 16.017   0.004  16.031 
 ```
