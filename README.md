@@ -18,7 +18,7 @@ First we read in the file names with the `list.files` function. This is another 
 fNames <- list.files("raw/", full.names = TRUE)
 ```
 
-Then we compare times of `lapply` and `mclapply` functions with `read.csv`, and then look at the effect of using the `fread` function instead. The items below are not benchmarks but gives a rough comparison if the amount of time that are spend using the different methods. Each method was run a couple of times and the best time taken.
+Then we compare times of `lapply` and `mclapply` functions with `read.csv`, and then look at the effect of using the `fread` function on the time taken. The items below are not benchmarks but gives a rough comparison if the amount of time that are spend using the different methods. Each method was run a couple of times and the best time taken.
 
 ```
 system.time(x1 <- lapply(fNames, read.csv, sep = "|", header = FALSE))
