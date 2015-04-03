@@ -12,7 +12,7 @@ The laptop used has a quad core i7 processor showing 8 threads by hyper-threadin
 
 The `mclapply` function in the `parallel` package is the multicore equivalent of often used `lapply` function. Very often you are working locally and simply need to read lots of files on a computer or a laptop. In these cases `mclapply` is your friend. It is convenient and with just a few changes you can make best use of your local computing resources.
 
-First we read in the file names with the `list.files` function. This is another very convenient function it is such a task saver. the data used are the Aquisition data sets from Fannie Mae and there are 49 such file in the folder ...
+First we read in the file names with the `list.files` function. This is another very convenient function it is such a task saver. The data used are the Aquisition data sets from Fannie Mae and there are 49 such file in the folder ...
 
 ```
 fNames <- list.files("raw/", full.names = TRUE)
