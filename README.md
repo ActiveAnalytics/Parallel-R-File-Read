@@ -1,4 +1,4 @@
-# Parallel R file read with `parallel` and `data.table` packages
+# Parallel R file reads with `parallel` and `data.table` packages
 
 ## Introduction
 
