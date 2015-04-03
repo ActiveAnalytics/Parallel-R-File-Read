@@ -33,7 +33,7 @@ system.time(x3 <- mclapply(fNames, fread, sep = "|", mc.cores = 8))
 #user     system elapsed 
 #85.441   2.148  23.012 
 ```
-The R programmer will know that the time of importance is the elapsed time, notice that the `fread` function doesn't have to be told whether there is a header or not, it is clever enough to work it out for itself. But this isn't all, the other nice thing about using the `data.table` format is that binding the list of tables together to form one large table is much faster than using data frames:
+The R programmer will know that the time of importance is the elapsed time, notice that the `fread` function doesn't have to be told whether the file has a header or not, it is clever enough to work it out for itself. But this isn't all, the other nice thing about using the `data.table` format is that binding the list of tables together to form one large table is much faster than using data frames:
 
 ```
 system.time(x1 <- do.call(rbind, x1))
