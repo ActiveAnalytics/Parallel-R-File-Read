@@ -22,33 +22,33 @@ Then we compare times of `lapply` and `mclapply` functions with `read.csv`, and 
 
 ```
 system.time(x1 <- lapply(fNames, read.csv, sep = "|", header = FALSE))
-user      system elapsed 
-209.846   0.851  210.748 
+#user      system elapsed 
+#209.846   0.851  210.748 
  
 system.time(x2 <- mclapply(fNames, read.csv, sep = "|", mc.cores = 8, header = FALSE))
-user      system elapsed 
-341.713  10.654  62.602 
+#user      system elapsed 
+#341.713  10.654  62.602 
  
 system.time(x3 <- mclapply(fNames, fread, sep = "|", mc.cores = 8))
-user     system elapsed 
-85.441   2.148  23.012 
+#user     system elapsed 
+#85.441   2.148  23.012 
 ```
 The R programmer will know that the time of importance is the elapsed time, notice that the `fread` function doesn't have to be told whether there is a header or not, it is clever enough to work it out for itself. But this isn't all, the other nice thing about using the `data.table` format is that binding the list of tables together to form one large table is much faster than using data frames:
 
 ```
 system.time(x1 <- do.call(rbind, x1))
-user  system elapsed 
-38.816   3.310  42.171 
+#user  system elapsed 
+#38.816   3.310  42.171 
 
 dim(x1) # check number of rows and columns
-[1] 19761893       22
+#[1] 19761893       22
 
 system.time(x3 <- do.call(rbind, x3))
-user  system elapsed 
-0.958   0.124   1.083 
+#user  system elapsed 
+#0.958   0.124   1.083 
 
 dim(x3) # check number of rows and columns
-[1] 19761893       22
+#[1] 19761893       22
 ```
 
 Most R programmers have been in the situation where you are waiting for ages for lists of data frames to bind together to give the final table. The `rbind` of `data.table` objects makes this problem go away.
@@ -74,12 +74,12 @@ Here are the outputs obtained comparing `lapply` and `mclapply`:
 .r <- seq(2.99, 3.99, by = 0.001)
 
 system.time(x1 <- mclapply(.r, logMap, .n = 1E4, mc.cores = 8))
-user  system elapsed 
-26.789   0.860   3.922 
+#user  system elapsed 
+#26.789   0.860   3.922 
 
 system.time(x2 <- lapply(.r, logMap, .n = 1E4))
-user  system elapsed 
-16.017   0.004  16.031 
+#user  system elapsed 
+#16.017   0.004  16.031 
 ```
 
 The 'secret sauce' here is in the `logMap` function where the output vector `.x` is generated first rather than growing the vector iteratively - basically allowing memory to be allocated first before the analysis.
